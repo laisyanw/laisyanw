@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Portfolio Laisya Nurwidian</title>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* =========================
+       RESET
+    ========================= */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background: #f7f9fc;
+      color: #1f2937;
+      transition: 0.3s ease;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* =========================
+       DARK MODE
+    ========================= */
+
+    body.dark {
+      background: #111827;
+      color: #f3f4f6;
+    }
+
+    body.dark .navbar {
+      background: rgba(17, 24, 39, 0.95);
+    }
+
+    body.dark .card,
+    body.dark .favorite-card,
+    body.dark .skill-card,
+    body.dark .personality-card {
+      background: #1f2937;
+      color: #f3f4f6;
+    }
+
+    body.dark .section-text {
+      color: #d1d5db;
+    }
+
+    /* =========================
+       NAVBAR
+    ========================= */
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 70px;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      padding: 0 8%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+
+      z-index: 1000;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 700;
+      color: #4776e6;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #4776e6;
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .theme-btn,
+    .menu-btn {
+      border: none;
+      background: #eef3ff;
+      color: #4776e6;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 17px;
+    }
+
+    .menu-btn {
+      display: none;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      min-height: 100vh;
+      padding: 130px 8% 70px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 50px;
+
+      background:
+        radial-gradient(circle at top right, #dce7ff, transparent 35%),
+        radial-gradient(circle at bottom left, #e7eaff, transparent 30%);
+    }
+
+    body.dark .hero {
+      background:
+        radial-gradient(circle at top right, #263b68, transparent 35%),
+        #111827;
+    }
+
+    .hero-content {
+      max-width: 600px;
+    }
+
+    .small-title {
+      color: #4776e6;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .hero h1 {
+      font-size: clamp(40px, 6vw, 70px);
+      line-height: 1.1;
+      margin-bottom: 15px;
+    }
+
+    .hero h1 span {
+      color: #4776e6;
+    }
+
+    .hero p {
+      font-size: 17px;
+      line-height: 1.8;
+      color: #6b7280;
+      margin-bottom: 25px;
+    }
+
+    body.dark .hero p {
+      color: #d1d5db;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 12px 22px;
+      border-radius: 30px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .primary-btn {
+      background: #4776e6;
+      color: white;
+    }
+
+    .primary-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(71,118,230,0.25);
+    }
+
+    .secondary-btn {
+      background: transparent;
+      border: 2px solid #4776e6;
+      color: #4776e6;
+    }
+
+    .secondary-btn:hover {
+      background: #4776e6;
+      color: white;
+    }
+
+    /* FOTO PROFIL */
+
+    .profile-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .profile-circle {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+
+      background: linear-gradient(135deg, #4776e6, #8e54e9);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      color: white;
+      font-size: 90px;
+      font-weight: 700;
+
+      box-shadow: 0 20px 50px rgba(71,118,230,0.3);
+
+      animation: floating 4s ease-in-out infinite;
+    }
+
+    @keyframes floating {
+      0%, 100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-15px);
+      }
+    }
+
+    /* =========================
+       GENERAL SECTION
+    ========================= */
+
+    section {
+      padding: 90px 8%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title h2 {
+      font-size: 35px;
+      margin-bottom: 10px;
+    }
+
+    .section-title span {
+      color: #4776e6;
+    }
+
+    .section-title p {
+      color: #6b7280;
+    }
+
+    body.dark .section-title p {
+      color: #d1d5db;
+    }
+
+    /* =========================
+       ABOUT
+    ========================= */
+
+    .about-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .about-text {
+      line-height: 1.8;
+    }
+
+    .about-text p {
+      color: #6b7280;
+      margin-bottom: 20px;
+    }
+
+    body.dark .about-text p {
+      color: #d1d5db;
+    }
+
+    .info-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .info-item {
+      padding: 15px 20px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    }
+
+    body.dark .info-item {
+      background: #1f2937;
+    }
+
+    .info-item strong {
+      color: #4776e6;
+    }
+
+    /* =========================
+       PERSONALITY
+    ========================= */
+
+    .personality-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+    }
+
+    .personality-card {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+      transition: 0.3s;
+    }
+
+    .personality-card:hover {
+      transform: translateY(-7px);
+    }
+
+    .personality-icon {
+      font-size: 35px;
+      margin-bottom: 15px;
+    }
+
+    .personality-card h3 {
+      margin-bottom: 10px;
+      color: #4776e6;
+    }
+
+    .personality-card p {
+      color: #6b7280;
+      line-height: 1.7;
+    }
+
+    body.dark .personality-card p {
+      color: #d1d5db;
+    }
+
+    /* =========================
+       HOBBY
+    ========================= */
+
+    .hobby-box {
+      max-width: 900px;
+      margin: auto;
+
+      background: white;
+      padding: 40px;
+      border-radius: 25px;
+
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+
+      text-align: center;
+    }
+
+    body.dark .hobby-box {
+      background: #1f2937;
+    }
+
+    .hobby-box .emoji {
+      font-size: 60px;
+      margin-bottom: 15px;
+    }
+
+    .hobby-box p {
+      color: #6b7280;
+      line-height: 1.9;
+    }
+
+    body.dark .hobby-box p {
+      color: #d1d5db;
+    }
+
+    /* =========================
+       FAVORITES
+    ========================= */
+
+    .favorites-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .favorite-card {
+      background: white;
+      padding: 25px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+      transition: 0.3s;
+    }
+
+    .favorite-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .favorite-card .emoji {
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
+
+    .favorite-card h3 {
+      color: #4776e6;
+      margin-bottom: 5px;
+    }
+
+    .favorite-card p {
+      color: #6b7280;
+    }
+
+    body.dark .favorite-card p {
+      color: #d1d5db;
+    }
+
+    /* =========================
+       SKILLS
+    ========================= */
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .skill-card {
+      background: white;
+      padding: 30px 20px;
+      text-align: center;
+      border-radius: 20px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+      transition: 0.3s;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .skill-card .icon {
+      font-size: 45px;
+      margin-bottom: 15px;
+    }
+
+    .skill-card h3 {
+      color: #4776e6;
+    }
+
+    /* =========================
+       DREAMS
+    ========================= */
+
+    .dream-container {
+      max-width: 900px;
+      margin: auto;
+
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    .dream-card {
+      padding: 35px;
+      border-radius: 25px;
+
+      background: linear-gradient(135deg, #4776e6, #8e54e9);
+      color: white;
+
+      box-shadow: 0 15px 30px rgba(71,118,230,0.25);
+
+      transition: 0.3s;
+    }
+
+    .dream-card:hover {
+      transform: scale(1.03);
+    }
+
+    .dream-card .icon {
+      font-size: 45px;
+      margin-bottom: 15px;
+    }
+
+    .dream-card h3 {
+      margin-bottom: 10px;
+    }
+
+    .dream-card p {
+      line-height: 1.7;
+    }
+
+    /* =========================
+       MOTTO
+    ========================= */
+
+    .motto {
+      text-align: center;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .motto blockquote {
+      font-size: 28px;
+      font-weight: 600;
+      line-height: 1.6;
+      color: #4776e6;
+    }
+
+    /* =========================
+       CLOSING
+    ========================= */
+
+    .closing {
+      text-align: center;
+      max-width: 750px;
+      margin: auto;
+    }
+
+    .closing p {
+      color: #6b7280;
+      line-height: 1.8;
+      font-size: 17px;
+    }
+
+    body.dark .closing p {
+      color: #d1d5db;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      background: #111827;
+      color: white;
+      padding: 30px 8%;
+      text-align: center;
+    }
+
+    footer span {
+      color: #7da0ff;
+    }
+
+    /* =========================
+       SCROLL TOP
+    ========================= */
+
+    #scrollTop {
+      position: fixed;
+      right: 25px;
+      bottom: 25px;
+
+      width: 45px;
+      height: 45px;
+
+      border: none;
+      border-radius: 50%;
+
+      background: #4776e6;
+      color: white;
+
+      cursor: pointer;
+      font-size: 20px;
+
+      display: none;
+      z-index: 999;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media (max-width: 900px) {
+
+      .nav-links {
+        position: absolute;
+        top: 70px;
+        left: 0;
+
+        width: 100%;
+
+        flex-direction: column;
+        align-items: center;
+
+        background: white;
+
+        padding: 25px;
+
+        display: none;
+      }
+
+      body.dark .nav-links {
+        background: #111827;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+      }
+
+      .hero-buttons {
+        justify-content: center;
+      }
+
+      .about-container {
+        grid-template-columns: 1fr;
+      }
+
+      .favorites-grid,
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .dream-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+
+      section {
+        padding: 70px 5%;
+      }
+
+      .navbar {
+        padding: 0 5%;
+      }
+
+      .profile-circle {
+        width: 220px;
+        height: 220px;
+        font-size: 65px;
+      }
+
+      .personality-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .favorites-grid,
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hobby-box {
+        padding: 25px;
+      }
+
+      .motto blockquote {
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       NAVBAR
+  ========================= -->
+
+  <header class="navbar">
+
+    <div class="logo">
+      Laisya.
+    </div>
+
+    <nav>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#personality">Personality</a></li>
+        <li><a href="#hobby">Hobby</a></li>
+        <li><a href="#favorites">Favorites</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#dreams">Dreams</a></li>
+      </ul>
+    </nav>
+
+    <div class="nav-buttons">
+      <button class="theme-btn" id="themeBtn" title="Ganti tema">
+        🌙
+      </button>
+
+      <button class="menu-btn" id="menuBtn">
+        ☰
+      </button>
+    </div>
+
+  </header>
+
+
+  <!-- =========================
+       HOME
+  ========================= -->
+
+  <section class="hero" id="home">
+
+    <div class="hero-content">
+
+      <div class="small-title">
+        ✨ Welcome to My Portfolio
+      </div>
+
+      <h1>
+        Hi, I'm <span>Laisya</span>
+      </h1>
+
+      <p>
+        Selamat datang di portofolio pribadiku.
+        Di sini kamu bisa mengenal aku lebih dekat,
+        mulai dari kepribadian, hobi, kemampuan,
+        sampai impian yang ingin aku capai.
+      </p>
+
+      <div class="hero-buttons">
+
+        <a href="#about" class="btn primary-btn">
+          Kenal Aku →
+        </a>
+
+        <a href="#dreams" class="btn secondary-btn">
+          My Dreams ✨
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div class="profile-container">
+
+      <div class="profile-circle">
+        LN
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       ABOUT ME
+  ========================= -->
+
+  <section id="about">
+
+    <div class="section-title">
+
+      <h2>About <span>Me</span></h2>
+
+      <p>Kenalan lebih dekat denganku 🌷</p>
+
+    </div>
+
+
+    <div class="about-container">
+
+      <div class="about-text">
+
+        <p>
+          Halo! Namaku Laisya Nurwidian, biasanya aku dipanggil Laisya.
+          Aku adalah siswi kelas X-K di SMAN 19 Bandung.
+        </p>
+
+        <p>
+          Aku suka melakukan hal-hal kreatif seperti membuat kerajinan.
+          Selain itu, aku juga suka menonton Drakor dan tertarik
+          mempelajari bahasa Korea.
+        </p>
+
+        <p>
+          Aku masih terus belajar dan berkembang untuk menjadi
+          versi terbaik dari diriku sendiri.
+        </p>
+
+      </div>
+
+
+      <div class="info-list">
+
+        <div class="info-item">
+          <strong>👩 Nama:</strong>
+          Laisya Nurwidian
+        </div>
+
+        <div class="info-item">
+          <strong>🌷 Panggilan:</strong>
+          Laisya
+        </div>
+
+        <div class="info-item">
+          <strong>🏫 Sekolah:</strong>
+          SMAN 19 Bandung
+        </div>
+
+        <div class="info-item">
+          <strong>📚 Kelas:</strong>
+          X-K
+        </div>
+
+        <div class="info-item">
+          <strong>📍 Tempat, Tanggal Lahir:</strong>
+          Bandung, 25 Oktober 2010
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       PERSONALITY
+  ========================= -->
+
+  <section id="personality">
+
+    <div class="section-title">
+
+      <h2>My <span>Personality</span></h2>
+
+      <p>Beberapa hal tentang diriku 💙</p>
+
+    </div>
+
+
+    <div class="personality-grid">
+
+      <div class="personality-card">
+
+        <div class="personality-icon">
+          💗
+        </div>
+
+        <h3>Kelebihan</h3>
+
+        <p>
+          Aku adalah pendengar yang baik dan cukup peka
+          terhadap perasaan teman. Aku senang mendengarkan
+          cerita teman dan berusaha memahami mereka.
+        </p>
+
+      </div>
+
+
+      <div class="personality-card">
+
+        <div class="personality-icon">
+          🌱
+        </div>
+
+        <h3>Kekurangan</h3>
+
+        <p>
+          Aku terkadang kurang percaya diri dan mudah
+          overthinking. Tapi aku sedang belajar untuk
+          lebih percaya pada diriku sendiri.
+        </p>
+
+      </div>
+
+
+      <div class="personality-card">
+
+        <div class="personality-icon">
+          🌷
+        </div>
+
+        <h3>Sifatku</h3>
+
+        <p>
+          Aku termasuk orang yang pemalu dan terkadang
+          merasa nggak enakan kepada orang lain.
+        </p>
+
+      </div>
+
+
+      <div class="personality-card">
+
+        <div class="personality-icon">
+          ✨
+        </div>
+
+        <h3>Hal yang Membuatku Berbeda</h3>
+
+        <p>
+          Aku menulis menggunakan tangan kiri dan memiliki
+          tanda lahir di mata kiri.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       HOBBY
+  ========================= -->
+
+  <section id="hobby">
+
+    <div class="section-title">
+
+      <h2>My <span>Hobbies</span> 🎨</h2>
+
+      <p>Hal-hal yang aku sukai</p>
+
+    </div>
+
+
+    <div class="hobby-box">
+
+      <div class="emoji">
+        🎨🧶🎬
+      </div>
+
+      <p>
+        Hobiku adalah membuat kerajinan karena menurutku
+        membuat kerajinan bisa mengasah kreativitas dan
+        pikiranku. Selain itu, membuat kerajinan juga
+        membuatku tidak mudah bosan.
+      </p>
+
+      <br>
+
+      <p>
+        Aku juga terkadang menonton Drakor karena selain
+        menghibur, aku tertarik untuk mempelajari bahasa Korea.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       FAVORITES
+  ========================= -->
+
+  <section id="favorites">
+
+    <div class="section-title">
+
+      <h2>My <span>Favorites</span> 💗</h2>
+
+      <p>Beberapa hal favoritku</p>
+
+    </div>
+
+
+    <div class="favorites-grid">
+
+      <div class="favorite-card">
+
+        <div class="emoji">
+          🍞
+        </div>
+
+        <h3>Makanan</h3>
+
+        <p>Roti</p>
+
+      </div>
+
+
+      <div class="favorite-card">
+
+        <div class="emoji">
+          💙🖤🤍
+        </div>
+
+        <h3>Warna</h3>
+
+        <p>Biru, Hitam, Putih</p>
+
+      </div>
+
+
+      <div class="favorite-card">
+
+        <div class="emoji">
+          📊
+        </div>
+
+        <h3>Pelajaran</h3>
+
+        <p>Ekonomi</p>
+
+      </div>
+
+
+      <div class="favorite-card">
+
+        <div class="emoji">
+          🎬🎧
+        </div>
+
+        <h3>Hiburan</h3>
+
+        <p>Drakor & Focus on Me</p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       SKILLS
+  ========================= -->
+
+  <section id="skills">
+
+    <div class="section-title">
+
+      <h2>My <span>Skills</span> ⭐</h2>
+
+      <p>Hal-hal yang sedang aku kuasai dan pelajari</p>
+
+    </div>
+
+
+    <div class="skills-grid">
+
+      <div class="skill-card">
+
+        <div class="icon">
+          🏸
+        </div>
+
+        <h3>Badminton</h3>
+
+      </div>
+
+
+      <div class="skill-card">
+
+        <div class="icon">
+          🇰🇷
+        </div>
+
+        <h3>Bahasa Korea</h3>
+
+      </div>
+
+
+      <div class="skill-card">
+
+        <div class="icon">
+          🍳
+        </div>
+
+        <h3>Memasak</h3>
+
+      </div>
+
+
+      <div class="skill-card">
+
+        <div class="icon">
+          🎨
+        </div>
+
+        <h3>Kerajinan Tangan</h3>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       DREAMS
+  ========================= -->
+
+  <section id="dreams">
+
+    <div class="section-title">
+
+      <h2>My <span>Dreams</span> ✨</h2>
+
+      <p>Impian yang ingin aku wujudkan</p>
+
+    </div>
+
+
+    <div class="dream-container">
+
+      <div class="dream-card">
+
+        <div class="icon">
+          💼
+        </div>
+
+        <h3>Menjadi Pengusaha Sukses</h3>
+
+        <p>
+          Aku ingin menjadi seorang pengusaha yang sukses,
+          mandiri, dan bisa menciptakan sesuatu yang
+          bermanfaat untuk banyak orang.
+        </p>
+
+      </div>
+
+
+      <div class="dream-card">
+
+        <div class="icon">
+          🇰🇷✈️
+        </div>
+
+        <h3>Pergi ke Korea</h3>
+
+        <p>
+          Salah satu impianku adalah pergi ke Korea untuk
+          melihat langsung budaya, tempat-tempat menarik,
+          dan mencoba menggunakan bahasa Korea yang aku pelajari.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       MOTTO
+  ========================= -->
+
+  <section>
+
+    <div class="section-title">
+
+      <h2>My <span>Motto</span> 🌷</h2>
+
+    </div>
+
+
+    <div class="motto">
+
+      <blockquote>
+        “Terus belajar, terus berkembang,
+        dan jangan takut mencoba.”
+      </blockquote>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       CLOSING
+  ========================= -->
+
+  <section>
+
+    <div class="section-title">
+
+      <h2>My <span>Hope</span> 💙</h2>
+
+    </div>
+
+
+    <div class="closing">
+
+      <p>
+        Aku berharap suatu hari nanti bisa menjadi orang
+        yang sukses, terus berkembang menjadi pribadi yang
+        lebih baik, dan bisa membanggakan kedua orang tuaku.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       FOOTER
+  ========================= -->
+
+  <footer>
+
+    <p>
+      © <span id="year"></span>
+      Laisya Nurwidian. All Rights Reserved.
+    </p>
+
+    <p>
+      Made with 💙 and creativity.
+    </p>
+
+  </footer>
+
+
+  <!-- TOMBOL SCROLL KE ATAS -->
+
+  <button id="scrollTop">
+    ↑
+  </button>
+
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================= -->
+
+  <script>
+
+    /* =========================
+       MOBILE MENU
+    ========================= */
+
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+
+    menuBtn.addEventListener("click", function () {
+
+      navLinks.classList.toggle("active");
+
+    });
+
+
+    /* =========================
+       CLOSE MENU AFTER CLICK
+    ========================= */
+
+    const links = document.querySelectorAll(".nav-links a");
+
+    links.forEach(function(link) {
+
+      link.addEventListener("click", function() {
+
+        navLinks.classList.remove("active");
+
+      });
+
+    });
+
+
+    /* =========================
+       DARK MODE
+    ========================= */
+
+    const themeBtn = document.getElementById("themeBtn");
+
+    themeBtn.addEventListener("click", function() {
+
+      document.body.classList.toggle("dark");
+
+      if (document.body.classList.contains("dark")) {
+
+        themeBtn.textContent = "☀️";
+
+        localStorage.setItem("theme", "dark");
+
+      } else {
+
+        themeBtn.textContent = "🌙";
+
+        localStorage.setItem("theme", "light");
+
+      }
+
+    });
+
+
+    /* =========================
+       SAVE THEME
+    ========================= */
+
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme === "dark") {
+
+      document.body.classList.add("dark");
+
+      themeBtn.textContent = "☀️";
+
+    }
+
+
+    /* =========================
+       CURRENT YEAR
+    ========================= */
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+
+    /* =========================
+       SCROLL TOP BUTTON
+    ========================= */
+
+    const scrollTop = document.getElementById("scrollTop");
+
+    window.addEventListener("scroll", function() {
+
+      if (window.scrollY > 400) {
+
+        scrollTop.style.display = "block";
+
+      } else {
+
+        scrollTop.style.display = "none";
+
+      }
+
+    });
+
+
+    scrollTop.addEventListener("click", function() {
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
+    });
+
+
+    /* =========================
+       FADE-IN ANIMATION
+    ========================= */
+
+    const cards = document.querySelectorAll(
+      ".personality-card, .favorite-card, .skill-card, .dream-card, .hobby-box"
+    );
+
+    const observer = new IntersectionObserver(
+      function(entries) {
+
+        entries.forEach(function(entry) {
+
+          if (entry.isIntersecting) {
+
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+
+          }
+
+        });
+
+      },
+      {
+        threshold: 0.15
+      }
+    );
+
+
+    cards.forEach(function(card) {
+
+      card.style.opacity = "0";
+      card.style.transform = "translateY(30px)";
+      card.style.transition = "all 0.7s ease";
+
+      observer.observe(card);
+
+    });
+
+  </script>
+
+</body>
+</html>
